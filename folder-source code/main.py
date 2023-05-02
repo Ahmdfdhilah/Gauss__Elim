@@ -163,16 +163,8 @@ def gauss_jordan(matriks, row, column, variable):
 print("="*52)
 print("*="+"Tubes Martriks dan Ruang Vektor".center(48)+"=*")
 print("*="+(48*"*").center(48)+"=*")
-print("*="+"Anggota Kelompok".center(48)+"=*")
-print("*="+(48*"*").center(48)+"=*")
 print("*="+"Nama : Ahmad Fadillah ".center(48)+"=*")
 print("*="+"NIM  : 121140173".center(48)+"=*")
-print("*="+"Nama : Muhammad Daffa Fahreza".center(48)+"*")
-print("*="+"NIM  : 121140178".center(48)+"=*")
-print("*="+"Nama : Ghulwan Shihabuddin".center(48)+"=*")
-print("*="+"NIM  : 121140164".center(48)+"=*")
-print("*="+"Nama : Varell Anthonio".center(48)+"=*")
-print("*="+"NIM  : 121140122".center(48)+"=*")
 print("="*52)
 
 user_option = "0"
@@ -188,63 +180,26 @@ while user_option != "2":
     status_matriks = False
     
     if user_option == "1":
-        print("*="+"Pilihan menu untuk penyelesaian (1-3)".center(48)+"=*")
         print("="*52)
-        print("*="+"1.input manual".ljust(48)+"=*")
-        print("*="+"2.input file".ljust(48)+"=*")
+        print("*="+"Masukkan Jumlah Baris Dan Kolom".ljust(48)+"=*")
         print("="*52)
-        user_option_type = input("Input Pilihan (1-2) : ")
+        row = int(input("Baris : "))
+        column = int(input("Kolom : "))
         print("="*52)
-        if user_option_type == "1":
-            print("*="+"Masukkan Jumlah Baris Dan Kolom".ljust(48)+"=*")
-            print("="*52)
-            row = int(input("Baris : "))
-            column = int(input("Kolom : "))
-            print("="*52)
-           
-            variable = ["x{}".format(i+1) for i in range(column-1)]
-            
-            matriks = np.zeros((row, column))
-        
-            for i in range(row):
-                for j in range(column):
-
-                    if j < column-1:
-                  
-                        print(" {} : ".format(variable[j]), end="")
-                
-                    else:
-                       
-                        print(" Hasil {} : ".format(i+1), end="")
+        variable = ["x{}".format(i+1) for i in range(column-1)]
+        matriks = np.zeros((row, column))
+        for i in range(row):
+            for j in range(column):
+                if j < column-1:
+                    print(" {} : ".format(variable[j]), end="")
+                else:
+                    print(" Hasil {} : ".format(i+1), end="")
                    
                     matriks[i][j] = float(input())
                  
                     if j == column-1:
                         print("="*52)
-            status_matriks = True
-        elif user_option_type == "2":
-            path = ['C:/Users/ernik/Downloads/Matvek_Tubes_Kelompok5/folder-test/', ""]
-            print("="*52)
-            print("*="+"List nama file: ".center(48)+"=*")
-            print("*="+"1. input-file-1.txt".center(48)+"=*")
-            print("*="+"2. input-file-2.txt".center(48)+"=*")
-            print("*="+"3. input-file-3.txt".center(48)+"=*")
-            print("="*52)
-            temp_input = str(input('Masukan nama file : '))
-            print("*"*52)
-            if temp_input != "":
-                path[1]= temp_input
-            full_path = ''.join(path)
-
-            if temp_input == "input-file-1.txt" or temp_input == "input-file-2.txt" or temp_input == "input-file-3.txt":
-                matriks = np.loadtxt(full_path, dtype = float, delimiter = ' ')
-                [row, column] = matriks.shape
-                variable = ["x{}".format(i+1) for i in range(column-1)]
-                status_matriks = True
-            else:
-                print("="*52)
-                print("=*"+"Harap masukan nama file yang sesuai dengan list diatas!".ljust(48)+"*=")
-                print("="*52)
+        status_matriks = True
         if status_matriks == True:
             print("*="+"Sistem Persamaan Linear".center(48)+"*=")
             print("*"*52)
